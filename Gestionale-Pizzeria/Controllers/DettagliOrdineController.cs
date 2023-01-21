@@ -10,6 +10,7 @@ using Gestionale_Pizzeria.Models;
 
 namespace Gestionale_Pizzeria.Controllers
 {
+    [Authorize]
     public class DettagliOrdineController : Controller
     {
         private ModelDbContext db = new ModelDbContext();

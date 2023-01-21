@@ -10,6 +10,7 @@ using Gestionale_Pizzeria.Models;
 
 namespace Gestionale_Pizzeria.Controllers
 {
+    [Authorize]
     public class OrdiniController : Controller
     {
         private ModelDbContext db = new ModelDbContext();
@@ -37,11 +38,20 @@ namespace Gestionale_Pizzeria.Controllers
         }
 
         // GET: Ordini/Create
-        public ActionResult Create()
+        public ActionResult Create(int id)
         {
-            ViewBag.IdDettagliOrdine = new SelectList(db.DettagliOrdine, "IdDettagliOrdine", "Nota");
-            ViewBag.IdUtente = new SelectList(db.Utenti, "IdUtente", "Username");
-            return View();
+            var utente = db.Utenti.Where(u => u.Username == User.Identity.Name).First();
+            DettagliOrdine dettagliOrdine = db.DettagliOrdine.Find(id);
+            Ordini ordine = new Ordini();
+            ordine.DettagliOrdine = dettagliOrdine;
+            ordine.IdDettagliOrdine = dettagliOrdine.IdDettagliOrdine;
+            ordine.Confermato = "Ordine Confermato";
+            ordine.Evaso = false;
+            ordine.Prezzo = dettagliOrdine.Importo;
+            ordine.IdUtente = utente.IdUtente;
+            //ViewBag.IdDettagliOrdine = new SelectList(db.DettagliOrdine, "IdDettagliOrdine", "Nota");
+            //ViewBag.IdUtente = new SelectList(db.Utenti, "IdUtente", "Username");
+            return View(ordine);
         }
 
         // POST: Ordini/Create
@@ -49,18 +59,15 @@ namespace Gestionale_Pizzeria.Controllers
         // Per altri dettagli, vedere https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "IdOrdine,Prezzo,Evaso,Confermato,IdUtente,IdDettagliOrdine")] Ordini ordini)
+        public ActionResult Create([Bind(Include = "IdOrdine,Prezzo,Evaso,Confermato,IdUtente,IdDettagliOrdine")] Ordini ordine)
         {
-            if (ModelState.IsValid)
-            {
-                db.Ordini.Add(ordini);
+           
+                db.Ordini.Add(ordine);
                 db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+                return RedirectToAction("Index", "Home");
+            
 
-            ViewBag.IdDettagliOrdine = new SelectList(db.DettagliOrdine, "IdDettagliOrdine", "Nota", ordini.IdDettagliOrdine);
-            ViewBag.IdUtente = new SelectList(db.Utenti, "IdUtente", "Username", ordini.IdUtente);
-            return View(ordini);
+   
         }
 
         // GET: Ordini/Edit/5

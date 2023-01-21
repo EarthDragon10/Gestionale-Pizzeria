@@ -140,6 +140,14 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202301211647242_InitialCreate.cs" />
+    <Compile Include="Migrations\202301211647242_InitialCreate.designer.cs">
+      <DependentUpon>202301211647242_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202301211650400_ModifiedDettagliOrdine.cs" />
+    <Compile Include="Migrations\202301211650400_ModifiedDettagliOrdine.designer.cs">
+      <DependentUpon>202301211650400_ModifiedDettagliOrdine.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\CustomRole.cs" />
     <Compile Include="Models\DettagliOrdine.cs" />
@@ -269,6 +277,14 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202301211647242_InitialCreate.resx">
+      <DependentUpon>202301211647242_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202301211650400_ModifiedDettagliOrdine.resx">
+      <DependentUpon>202301211650400_ModifiedDettagliOrdine.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

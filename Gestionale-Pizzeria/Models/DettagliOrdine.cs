@@ -27,9 +27,9 @@ namespace Gestionale_Pizzeria.Models
 
         public int IdProdotto { get; set; }
         public virtual Prodotti Prodotti { get; set; }
-        [NotMapped()]
+
         public string StatoPreparazione { get; set; }
-        [NotMapped()]
+
         public string Confermato { get; set; }
 
         public static List<DettagliOrdine> ListDettagliOrdine = new List<DettagliOrdine>();
