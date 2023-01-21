@@ -1,0 +1,24 @@
+﻿@model IEnumerable<Gestionale_Pizzeria.Models.DettagliOrdine>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@foreach (var item in Gestionale_Pizzeria.Models.DettagliOrdine.ListDettagliOrdine)
+{
+    <div class="card shadow p-2" style="width: 18rem;">
+        <img class="card-img-top rounded" src="../Content/FileUpload/@item.Prodotti.UrlImg" alt="Card image cap">
+        <div class="card-body">
+            <h2 class="card-text">@item.Prodotti.Nome</h2>
+            <h3 class="card-text">N: @item.IdDettagliOrdine</h3>
+            <p class="card-text">Quantiá inserita: @item.Quantita</p>
+            <p class="card-text">Importo totale: @item.Importo</p>
+            <p class="card-text text-danger"></p>
+            <p class="card-text">Note: @item.Nota</p>
+
+            <div class="btn btn-success">@Html.ActionLink("Elimina Ordine", "Create", "DettagliOrdine", new { id = item.IdProdotto }, null)</div>
+        </div>
+    </div>
+}
+
+

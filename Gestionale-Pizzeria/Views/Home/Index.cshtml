@@ -1,0 +1,20 @@
+﻿@model IEnumerable<Gestionale_Pizzeria.Models.Prodotti>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@foreach (var item in Model)
+{
+    <div class="card shadow p-2" style="width: 18rem;">
+        <img class="card-img-top rounded" src="../Content/FileUpload/@item.UrlImg" alt="Card image cap">
+        <div class="card-body">
+            <h2 class="card-text">@item.Nome</h2>
+            <p class="card-text">€ @item.PrezzoVendita</p>
+            <h4 class="card-text">Ingredienti:</h4>
+            <p class="card-text">@item.Ingredienti</p>
+
+            <div class="btn btn-success">@Html.ActionLink("Altre Info", "Create", "DettagliOrdine", new { id = item.IdProdotto }, null)</div>
+        </div>
+    </div>
+}
