@@ -24,6 +24,7 @@ namespace Gestionale_Pizzeria.Models
 
         [Required]
         [StringLength(20)]
+        [Display(Name ="Password")]
         public string Pwd { get; set; }
 
         [Required]

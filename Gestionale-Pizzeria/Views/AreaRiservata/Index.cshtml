@@ -4,20 +4,11 @@
     ViewBag.Title = "Index";
 }
 
-<div class="d-flex flex-column gap-5">
-    <div>
-        @Html.ActionLink("Lista Articoli", "Index", "Prodotti")
-        @Html.ActionLink("Ordini Confermati", "OrdiniConfermati", "Ordini")
-        @Html.ActionLink("Riepilogo", "Riepilogo", "Ordini")
-    </div>
-    <div>
-        <h2 class="text-center d-block">Lista Articoli</h2>
-    </div>
-</div>
+<h2>Index</h2>
 
-
-<hr />
-
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
 <table class="table">
     <tr>
         <th>
@@ -44,7 +35,7 @@
             @Html.DisplayFor(modelItem => item.Nome)
         </td>
         <td>
-            <img class="card-img-top rounded" src="../Content/FileUpload/@item.UrlImg" alt="Card image cap">
+            @Html.DisplayFor(modelItem => item.UrlImg)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.PrezzoVendita)

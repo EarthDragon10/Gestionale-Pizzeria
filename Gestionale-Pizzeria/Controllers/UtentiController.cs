@@ -50,8 +50,8 @@ namespace Gestionale_Pizzeria.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "IdUtente,Username,Pwd,Nome,Cognome,Indirizzo,IdRuolo")] Utenti utenti)
         {
-            if (ModelState.IsValid)
-            {
+            if (ModelState.IsValid== true && db.Utenti.Where(user => user.Username == utenti.Username).Count() == 0 )
+            {     
                 db.Utenti.Add(utenti);
                 db.SaveChanges();
                 return RedirectToAction("Index");

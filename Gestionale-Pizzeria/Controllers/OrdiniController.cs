@@ -22,6 +22,27 @@ namespace Gestionale_Pizzeria.Controllers
             return View(ordini.ToList());
         }
 
+        public ActionResult OrdiniConfermati()
+        {
+            //ordine.Confermato = "Ordine Confermato";
+
+            List<Ordini> ordiniConfermati = db.Ordini.Where(order => order.Confermato == "Ordine Confermato").ToList();
+
+            return View(ordiniConfermati);
+        }
+
+        public ActionResult Riepilogo()
+        {
+            Ordini.TotaleOrdiniEvasi = db.Ordini.Where(order => order.Evaso == true).ToList().Count();
+            List<Ordini> TotaleOrdiniEvasi = db.Ordini.Where(order => order.Evaso == true).ToList();
+
+            foreach(Ordini item in TotaleOrdiniEvasi)
+            {
+                Ordini.TotaleIncassato += item.Prezzo;
+            }
+            return View();
+        }
+
         // GET: Ordini/Details/5
         public ActionResult Details(int? id)
         {
@@ -43,7 +64,7 @@ namespace Gestionale_Pizzeria.Controllers
             var utente = db.Utenti.Where(u => u.Username == User.Identity.Name).First();
             DettagliOrdine dettagliOrdine = db.DettagliOrdine.Find(id);
             Ordini ordine = new Ordini();
-            ordine.DettagliOrdine = dettagliOrdine;
+            //ordine.DettagliOrdine = dettagliOrdine;
             ordine.IdDettagliOrdine = dettagliOrdine.IdDettagliOrdine;
             ordine.Confermato = "Ordine Confermato";
             ordine.Evaso = false;
@@ -60,14 +81,10 @@ namespace Gestionale_Pizzeria.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "IdOrdine,Prezzo,Evaso,Confermato,IdUtente,IdDettagliOrdine")] Ordini ordine)
-        {
-           
+        {           
                 db.Ordini.Add(ordine);
                 db.SaveChanges();
                 return RedirectToAction("Index", "Home");
-            
-
-   
         }
 
         // GET: Ordini/Edit/5

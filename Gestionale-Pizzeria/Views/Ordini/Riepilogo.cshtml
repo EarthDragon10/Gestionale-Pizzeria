@@ -1,0 +1,21 @@
+﻿@model Gestionale_Pizzeria.Models.Ordini
+
+@{
+    ViewBag.Title = "Riepilogo";
+}
+
+<div class="d-flex flex-column gap-5">
+    <div>
+        @Html.ActionLink("Lista Articoli", "Index", "Prodotti")
+        @Html.ActionLink("Ordini Confermati", "OrdiniConfermati", "Ordini")
+        @Html.ActionLink("Riepilogo", "Riepilogo", "Ordini")
+    </div>
+    <hr />
+    <div>
+        <h2 class="text-center">Riepilogo</h2>
+    </div>
+</div>
+<div class="d-flex">
+    <div>Totale ordini Evasi: @Gestionale_Pizzeria.Models.Ordini.TotaleOrdiniEvasi</div>
+    <div>Totale Incassato: @Gestionale_Pizzeria.Models.Ordini.TotaleOrdiniEvasi</div>
+</div>

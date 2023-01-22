@@ -26,5 +26,8 @@ namespace Gestionale_Pizzeria.Models
         public virtual DettagliOrdine DettagliOrdine { get; set; }
 
         public virtual Utenti Utenti { get; set; }
+
+        public static int TotaleOrdiniEvasi { get; set; }
+        public static int? TotaleIncassato { get; set; }
     }
 }

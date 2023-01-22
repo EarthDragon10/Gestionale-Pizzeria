@@ -14,6 +14,7 @@ namespace Gestionale_Pizzeria.Controllers
     {
         private ModelDbContext db = new ModelDbContext();
 
+        [Authorize(Roles ="Admin")]
         // GET: Prodotti
         public ActionResult Index()
         {

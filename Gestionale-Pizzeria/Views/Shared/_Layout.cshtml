@@ -27,14 +27,14 @@
                 {
                     <li class="btn btn-warning text-white rounded btn-login">@Html.ActionLink("Logout", "SignOut", "Login")</li>
                 }
-                <li>@Html.ActionLink("Register", "Signup", "Login") <i class="fa-solid fa-user-plus"></i></li>
+                <li>@Html.ActionLink("Register", "Create", "Utenti") <i class="fa-solid fa-user-plus"></i></li>
             </ul>
         </div>
         <div>
-            @Html.ActionLink("Carrello", "Carrello", "Ordini") <i class="fa-solid fa-cart-shopping"></i>
+            @Html.ActionLink("Carrello", "Index", "Carrello") <i class="fa-solid fa-cart-shopping"></i>
         </div>
     </div>
-    <div class="container d-flex flex-wrap body-content">
+    <div class="container d-flex flex-wrap gap-5 justify-content-center body-content">
         @RenderBody()
     </div>
     <div class="container-fluid">
@@ -44,9 +44,9 @@
                     <a href="/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
                         <svg class="bi" width="30" height="24"><use xlink:href="#bootstrap"></use></svg>
                     </a>
-                    <span class="mb-3 mb-md-0">© 2022 Company, Inc</span>
+                    <span class="mb-3 mb-md-0">© 2023 Pizza Pazza, Laguda Stefano</span>
                 </div>
-
+                <div class="text-center">@Html.ActionLink("Area riservata", "Index", "Prodotti")</div>
                 <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
                     <li class="ms-3"><i class="fa-brands fa-linkedin"></i></li>
                     <li class="ms-3"><i class="fa-brands fa-instagram"></i></li>

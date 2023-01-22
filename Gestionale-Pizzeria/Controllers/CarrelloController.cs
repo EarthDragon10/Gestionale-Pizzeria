@@ -36,7 +36,7 @@ namespace Gestionale_Pizzeria.Controllers
             db.Ordini.Add(ordine);
             db.SaveChanges();
 
-            return RedirectToAction(actionName: "Index", controllerName: "Home");
+            return RedirectToAction("Index", "Home");
         }
 
 

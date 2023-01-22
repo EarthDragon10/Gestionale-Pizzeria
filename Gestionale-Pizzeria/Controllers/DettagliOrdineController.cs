@@ -65,21 +65,25 @@ namespace Gestionale_Pizzeria.Controllers
         // Per altri dettagli, vedere https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "IdDettagliOrdine,Quantita,Nota,IdProdotto")] DettagliOrdine dettagliOrdine)
+        public ActionResult Create([Bind(Include = "Quantita,Nota,IdProdotto")] DettagliOrdine dettagliOrdine)
         {
-            dettagliOrdine.Prodotti = TempData["Prodotto"] as Prodotti;
+           Prodotti prodotto = TempData["Prodotto"] as Prodotti;
+
+            //dettagliOrdine.Prodotti = TempData["Prodotto"] as Prodotti;
 
             if (ModelState.IsValid)
             {
                 ViewBag.IdProdotto = new SelectList(db.Prodotti, "IdProdotto", "Nome", dettagliOrdine.IdProdotto);
-                dettagliOrdine.Importo = dettagliOrdine.Quantita * Convert.ToInt32(dettagliOrdine.Prodotti.PrezzoVendita);
+                dettagliOrdine.Importo = dettagliOrdine.Quantita * Convert.ToInt32(prodotto.PrezzoVendita);
                 dettagliOrdine.Confermato = "ORDINE DA CONFERMARE";
                 dettagliOrdine.StatoPreparazione = "Preparazione in corso...";
+                dettagliOrdine.IdProdotto = prodotto.IdProdotto;
+                //DettagliOrdine.ListDettagliOrdine.Add(dettagliOrdine);
                 db.DettagliOrdine.Add(dettagliOrdine);
                 db.SaveChanges();
                 //DettagliOrdine DbDettagliOrdine = db.DettagliOrdine.ToList().LastOrDefault();
                 //DettagliOrdine.ListDettagliOrdine.Add(DbDettagliOrdine);
-                
+
                 return RedirectToAction("Index", "Carrello");
             }
 

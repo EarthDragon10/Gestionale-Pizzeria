@@ -129,6 +129,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AreaRiservataController.cs" />
     <Compile Include="Controllers\CarrelloController.cs" />
     <Compile Include="Controllers\DettagliOrdineController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -268,6 +269,9 @@
     <Content Include="Views\DettagliOrdine\PartialViewSingoloProdotto.cshtml" />
     <Content Include="Views\Login\SignIn.cshtml" />
     <Content Include="Views\Carrello\Index.cshtml" />
+    <Content Include="Views\AreaRiservata\Index.cshtml" />
+    <Content Include="Views\Ordini\OrdiniConfermati.cshtml" />
+    <Content Include="Views\Ordini\Riepilogo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
